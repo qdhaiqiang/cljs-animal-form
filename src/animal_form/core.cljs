@@ -49,9 +49,9 @@
     nil [loading-page]]])
 
 (kf/reg-controller
- :league
- {:params (fn [route-data]
-            (when (-> route-data :data :name (= :league))
+ :xxxx
+ {:params (fn [ww]
+            (when (-> ww :data :name (= :index))
               true))
   :start  (fn [ctx _]
             (prn "进入start"))})

@@ -35,11 +35,17 @@
         [:option {:value ""} "Please select"]
         (map (fn [o] [:option {:key o :value o} o]) options)]]]]))
 
+(defn test1 [props]
+  (let [a 12]
+    (fn []
+      [:div "test1 " props])))
+
 (defn main-panel []
   (let [is-valid? @(re-frame/subscribe [::subs/form-is-valid? [:animal-name :animal-type]])]
     [:div.section
      [animal-list]
      [text-input :animal-name "Animal Name"]
      [select-input :animal-type "Animal Type" animal-types]
+     [test1 "test1-props"]
      [:button.button.is-primary {:disabled (not is-valid?)
                                  :on-click #(re-frame/dispatch [::events/save-form])} "Save"]]))
